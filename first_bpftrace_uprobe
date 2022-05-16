@@ -1,0 +1,10 @@
+#!/usr/bin/env bpftrace
+
+uprobe:./hello_world:hello{
+    printf("Started at %ld", nsecs);
+}
+
+uretprobe:./hello_world:0x0000000000001149{
+    printf("Ended at %ld", nsecs);
+}
+
